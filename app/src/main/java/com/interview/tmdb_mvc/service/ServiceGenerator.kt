@@ -10,7 +10,7 @@ import com.interview.tmdb_mvc.R
 import com.interview.tmdb_mvc.utility.ConnectionDetector
 import com.interview.tmdb_mvc.utility.Loger
 import com.interview.tmdb_mvc.utility.Util
-import com.ridetechnologies.rider.utility.TinyDb
+import com.interview.tmdb_mvc.utility.TinyDb
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
@@ -27,12 +27,10 @@ class ServiceGenerator {
     private var context: Activity
     private lateinit var dialog: Dialog
 
-
     interface ServiceGeneratorInterfaceWithFailure {
-        fun OnSuccess(response: Response<JsonObject?>)
-        fun OnFailure(call1: Throwable)
+        fun onSuccess(response: Response<JsonObject?>)
+        fun onFailure(call1: Throwable)
     }
-
 
     constructor(
         mContext: Activity,
@@ -55,19 +53,21 @@ class ServiceGenerator {
         call.enqueue(object : Callback<JsonObject?> {
             override fun onResponse(call1: Call<JsonObject?>, response: Response<JsonObject?>) {
 
-                dialog.dismiss()
+                if (isLoderShow) {
+                    dialog.dismiss()
+                }
                 try {
                     Loger.LogError("onResponse", " -- " + response.body())
                     if (response.code() == 200) {
                         if (response.body() != null) {
-                            obj!!.OnSuccess(response)
+                            obj!!.onSuccess(response)
                         }
-                    } else if (response.code() == 400) {
+                    } else if (response.code() == 401) {
                         val jsonObject = JSONObject(response.errorBody()!!.string())
-                        Toast.makeText(mContext,      jsonObject.getString("message"),Toast.LENGTH_SHORT).show()
-                    } else if (response.code() == 500) {
+                        Toast.makeText(mContext,jsonObject.getString("message"),Toast.LENGTH_SHORT).show()
+                    } else if (response.code() == 404) {
                         val jsonObject = JSONObject(response.errorBody()!!.string())
-                        Toast.makeText(mContext,      jsonObject.getString("message"),Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext,jsonObject.getString("message"),Toast.LENGTH_SHORT).show()
                     }
 
                 } catch (e: Exception) {
@@ -76,8 +76,10 @@ class ServiceGenerator {
             }
 
             override fun onFailure(call1: Call<JsonObject?>, t: Throwable) {
-                dialog.dismiss()
-                obj!!.OnFailure(t)
+                if (isLoderShow) {
+                    dialog.dismiss()
+                }
+                obj!!.onFailure(t)
 
             }
         })

@@ -3,6 +3,7 @@
     package="com.interview.tmdb_mvc">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".utility.ApplicationClass"
@@ -13,7 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMDB_MVC">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.HomeScreen"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+
+        <activity
+            android:name=".activity.SplashScreen"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

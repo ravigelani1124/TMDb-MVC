@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TMDB_MVC</string>
     <string name="no_internet">No internet connection, please make sure that Wi-Fi or mobile data is turned on, then try again.</string>
+    <string name="api_key">f05c3b8d922103b63e4eea496cf3d1f7</string>
+    <string name="access_token">eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMDVjM2I4ZDkyMjEwM2I2M2U0ZWVhNDk2Y2YzZDFmNyIsInN1YiI6IjVmODkzZmMwMjY2Nzc4MDAzOGRmNjQxNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sEJph4e8aUFtMA8mogjSzUAF0eNaXRmwOQRxkWehb5w</string>
+    <string name="str_no_data">No data found</string>
 </resources>

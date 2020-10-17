@@ -1,4 +1,4 @@
-package com.ridetechnologies.rider.utility
+package com.interview.tmdb_mvc.utility
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,45 +9,19 @@ class TinyDb {
 
     companion object {
 
-        const val gender: String = "gender"
-        const val baseUrl: String = "http://13.233.92.186:13001/api/"
+        const val baseUrl: String = "https://api.themoviedb.org/"
         const val DEFAULT_STRING = "-1"
-        const val fcmToken: String = "fcmToken"
         const val oauthToken = "oauthToken"
-
-        //User Details
-        const val userId = "userId"
-        const val firstName = "firstName"
-        const val userName = "userName"
-        const val lastName = "lastName"
-        const val email = "email"
-        const val profileImage = "profileImage"
-        const val phoneNumber = "phoneNumber"
-        const val language = "language"
-        const val isdCode = "isdCode"
-        const val userRating = "userRating"
-        const val isUserLogin = "isUserLogin"
-        const val userLat="lat"
-        const val userLng="lng"
-
-        //Firebase User Details
-        const val firebaseUserEmail = "firebaseUserEmail"
-        const val firebaseUserId = "firebaseUserId"
-        const val firebaseUserPassword = "firebaseUserPassword"
-
-        //firebase server details
-        const val gpsTrakingType= "gpsTrakingType"
-        const val firebaseRootPath= "firebaseRootPath"
-        const val firebaseSubRootPath= "firebaseSubRootPath"
-
+        const val configurationResponseModel = "configurationResponseModel"
+        const val posterImagePath = "posterImagePath"
     }
 
     private var sharedpreferences: SharedPreferences? = null
-    private val MyPREFERENCES = "RideTechnologyRider"
+    private val myPreference = "TMDB"
 
     constructor(appContext: Context) {
         sharedpreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
-        sharedpreferences = appContext.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE)
+        sharedpreferences = appContext.getSharedPreferences(myPreference, Context.MODE_PRIVATE)
     }
 
 
