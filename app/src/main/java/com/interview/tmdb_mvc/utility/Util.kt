@@ -5,10 +5,10 @@ import android.app.Dialog
 import android.content.Context
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
-import android.widget.LinearLayout
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatTextView
 import com.interview.tmdb_mvc.R
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Util {
 
@@ -39,6 +39,22 @@ object Util {
             ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         val v = (ctx as Activity).currentFocus ?: return
         inputManager.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    fun parseDateToddMMyyyy(time: String?): String? {
+        val inputPattern = "yyyy-MM-dd"
+        val outputPattern = "dd MMM yyyy"
+        val inputFormat = SimpleDateFormat(inputPattern)
+        val outputFormat = SimpleDateFormat(outputPattern)
+        var date: Date? = null
+        var str: String? = null
+        try {
+            date = inputFormat.parse(time)
+            str = outputFormat.format(date)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+        return str
     }
 
 }

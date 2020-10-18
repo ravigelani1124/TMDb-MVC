@@ -8,8 +8,20 @@
     android:padding="@dimen/_15sdp"
     tools:context=".activity.HomeScreen">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@string/str_home"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeMedium" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovie"
+        android:layout_below="@id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/pbLoadMore"

@@ -13,6 +13,7 @@ import com.interview.tmdb_mvc.R
 import com.interview.tmdb_mvc.model.movie.MovieResponseModel
 import com.interview.tmdb_mvc.model.movie.MovieResult
 import com.interview.tmdb_mvc.utility.TinyDb
+import com.interview.tmdb_mvc.utility.Util
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -36,7 +37,7 @@ data class MovieAdapter(
             holder.tvMovieName.text = result.title
         }
         if (result.release_date.isNotEmpty()) {
-            holder.tvMovieDesc.text = result.release_date
+            holder.tvMovieDesc.text = Util.parseDateToddMMyyyy(result.release_date)
         }
 
         if (result.poster_path.isNotEmpty()) {
